@@ -1,5 +1,5 @@
 # gas-webapp-sales-dx
-- GASで作成したWebアプリ
+- GASで作成したWebアプリ（営業管理グラフ & ランキング）
 
 # GAS Webアプリ①：営業管理グラフ & ランキング
 
