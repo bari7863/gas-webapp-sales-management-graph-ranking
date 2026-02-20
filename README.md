@@ -4,8 +4,8 @@
 # GAS Webアプリ①：営業管理グラフ & ランキング
 
 ## URL
-- Webアプリ：https://script.google.com/macros/s/AKfycbxwAN3VyIEUyZglxmqWbWABV75NYjhUr_CO--rxIjWEdx5hA6laBBc8pePhDpFE-WFH/exec
-- スプレッドシート（閲覧）：https://docs.google.com/spreadsheets/d/1sbtPfK7p7SmPbTWP1zzJJtjJryMFIwNmCHO073lvA1I/edit?usp=sharing
+- Webアプリ：https://script.google.com/macros/s/AKfycbxVZGo_RLr9WsijhPvD4MGqarYROEjginhEc0Af0tXYLHPmY_24zKxXSxPUTRGJxsVbaw/exec
+- スプレッドシート（閲覧）：https://docs.google.com/spreadsheets/d/1qeceAOApZM0KVvGOGKjOlkub5KbYOabh6OOBBvyfHUc/edit?usp=sharing
 
 ## 概要
 - 目的：営業マンの数字をグラフ・ランキングで表示し、競争心を芽生えされるためのWebアプリ
