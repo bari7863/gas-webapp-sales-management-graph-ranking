@@ -11,7 +11,7 @@ https://script.google.com/macros/s/AKfycbxVZGo_RLr9WsijhPvD4MGqarYROEjginhEc0Af0
 https://docs.google.com/spreadsheets/d/1qeceAOApZM0KVvGOGKjOlkub5KbYOabh6OOBBvyfHUc/edit?usp=sharing
 
 ## 概要
-- 目的：営業マンの数字をグラフ・ランキングで表示し、競争心を芽生えさせモチベーションと生産性をUPさせるWebアプリ
+- 目的：営業マンの数字を「グラフ・ランキング」で表示し、競争心を芽生えさせモチベーションと生産性をUPさせるWebアプリ
 
 ## 機能
 - 数字入力：営業マンにスプレッドシートを共有し入力（※下記15項目が入力する数字）
