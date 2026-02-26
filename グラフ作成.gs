@@ -21,13 +21,16 @@ function createDailyAndMonthlyCharts() {
   createMonthlyGraphSheet_(ss, src, members, metrics);
 }
 
+/**
+ * 1人目：22行目〜39行目、2人目：41〜58…（1ブロック18行 + 1行空き）
+ */
 function getMembers_(sheet) {
   var members = [];
-  // 1人目：22〜39、2人目：41〜58 … 15人目：288〜305
-  // → baseRow は 22, 41, 60... と 19行間隔
   var startRow    = 22; // 1人目の先頭行（A22）
   var blockHeight = 19; // 18行ブロック + 間に1行空き（22→41）
-  var memberCount = 15;
+  var lastRow     = sheet.getLastRow();
+  var memberCount = Math.floor((lastRow - startRow) / blockHeight) + 1;
+  if (memberCount < 0) memberCount = 0;
 
   for (var i = 0; i < memberCount; i++) {
     var baseRow = startRow + i * blockHeight;
