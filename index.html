@@ -523,21 +523,33 @@
       .refresh-btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
 
       /* 左上：更新中バッジ */
-      .updating-badge {
+      #updatingBadge{
         position: fixed;
-        top: 14px;
-        left: 14px;
-        z-index: 9999;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        color: #fff;
-        font-weight: 900;
-        background: linear-gradient(135deg, #111827, #0b1220, #000000);
-        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+        top: 60px; left: 14px; z-index: 9999;
+        padding: 10px 14px 14px; /* 下を少し厚く（プログレス用） */
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(15,23,42,.85), rgba(30,58,138,.75));
+        color: #fff; font-size: 13px; line-height: 1.35;
+        border: 1px solid rgba(255,255,255,.20);
+        box-shadow: 0 12px 28px rgba(0,0,0,.28);
+        backdrop-filter: blur(6px);
+        pointer-events: none;
+        display: flex; align-items: center; gap: 10px;
+        opacity: 0; transform: translateY(-8px);
+        transition: opacity .18s ease, transform .18s ease;
       }
+      #updatingBadge.show{ opacity: 1; transform: translateY(0); }
+
+      /* 保存中のスピナーはそのまま流用 */
+      .chip-spinner{
+        width: 16px; height: 16px; border-radius: 999px;
+        border: 2px solid rgba(255,255,255,.35);
+        border-top-color: #fff;
+        animation: chipspin 1s linear infinite;
+      }
+      @keyframes chipspin{ to { transform: rotate(360deg); } }
+
+      #updatingBadge .chip-text{ font-weight: 900; }
 
       .hidden { display: none !important; }
 
@@ -554,6 +566,11 @@
         top: 15px !important;
         padding: 14px 25px !important;
         font-size: 25px !important;
+      }
+
+      body.is-mobile #updatingBadge {
+        top: 40px !important;
+        left: 14px !important;
       }
 
       body.is-mobile .tab-bar {
@@ -888,7 +905,18 @@
          isUpdating = !!flag;
          var badge = document.getElementById('updatingBadge');
          var btn = document.getElementById('btn-refresh');
-         if (badge) badge.classList.toggle('hidden', !isUpdating);
+
+         if (badge) {
+           if (isUpdating) {
+             badge.innerHTML = '<span class="chip-spinner"></span><span class="chip-text">更新中</span>';
+             badge.classList.add('show');
+             badge.hidden = false;
+           } else {
+             badge.classList.remove('show');
+             setTimeout(function(){ badge.hidden = true; }, 180);
+           }
+         }
+
          if (btn) btn.disabled = isUpdating;
        }
 
@@ -1573,9 +1601,7 @@
     <button id="btn-refresh" class="refresh-btn" onclick="onRefreshClick()">更新</button>
 
     <!-- 左上：更新中表示 -->
-    <div id="updatingBadge" class="updating-badge hidden">
-      <span>更新中</span><span class="spinner" aria-hidden="true"></span>
-    </div>
+    <div id="updatingBadge" class="updating-badge" aria-live="polite" aria-atomic="true" hidden></div>
 
     <!-- 読み込み中ポップアップ（※更新中は表示しない） -->
     <div id="loadingOverlay" class="loading-overlay hidden">
