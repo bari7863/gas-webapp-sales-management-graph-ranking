@@ -719,6 +719,10 @@
         background: linear-gradient(135deg, #a78bfa, #7c3aed, #4c1d95);
         box-shadow: 0 22px 50px rgba(15, 23, 42, 0.28);
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
       }
       
       /* スマホ画面 */
@@ -1605,7 +1609,10 @@
 
     <!-- 読み込み中ポップアップ（※更新中は表示しない） -->
     <div id="loadingOverlay" class="loading-overlay hidden">
-      <div class="loading-modal" role="status" aria-live="polite">読み込み中...</div>
+      <div class="loading-modal" role="status" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>読み込み中...</span>
+      </div>
     </div>
 
     <!-- 更新後：反映確認ポップアップ -->
